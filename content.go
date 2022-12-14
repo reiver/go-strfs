@@ -21,6 +21,7 @@ import (
 //		FileModTIme: time.Date(2022, 12, 12, 10, 30, 14, 2, time.UTC),
 //	}
 type Content struct{
+	value string
 	reader io.Reader
 	size int64
 	closed bool
@@ -41,11 +42,12 @@ var _ io.ReadCloser = &Content{}
 //		FileName:    "message.md",
 //		FileModTIme: time.Now(),
 //	}
-func CreateContent(s string) Content {
-	var reader io.Reader = strings.NewReader(s)
-	var size int64 = int64(len(s))
+func CreateContent(value string) Content {
+	var reader io.Reader = strings.NewReader(value)
+	var size int64 = int64(len(value))
 
 	return Content{
+		value:value,
 		reader:reader,
 		size:size,
 	}
@@ -154,4 +156,15 @@ func (receiver *Content) Size() int64 {
 	}
 
 	return receiver.size
+}
+
+// String retusn the value of the string that strfs.Content is wrapping.
+//
+// String makes *strfs.Content fit the fmt.Stringer interface.
+func (receiver *Content) String() string {
+	if nil == receiver {
+		return ""
+	}
+
+	return receiver.value
 }

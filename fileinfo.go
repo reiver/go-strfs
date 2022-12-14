@@ -6,6 +6,7 @@ import (
 )
 
 type internalFileInfo struct {
+	sys string
 	mode fs.FileMode
 	modtime time.Time
 	name string
@@ -35,5 +36,5 @@ func (receiver internalFileInfo) Size() int64 {
 }
 
 func (receiver internalFileInfo) Sys() any {
-	return nil
+	return receiver.sys
 }

@@ -96,6 +96,7 @@ func (receiver *RegularFile) Stat() (fs.FileInfo, error) {
 	const modeRegularFile = 0
 
 	return internalFileInfo{
+		sys:     receiver.FileContent.String(),
 		name:    receiver.FileName,
 		size:    receiver.FileContent.Size(),
 		mode:    modeRegularFile,

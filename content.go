@@ -70,11 +70,11 @@ func EmptyContent() Content {
 	return Content{}
 }
 
-// Close makes strfs.Content fit the io.Closer interface.
-//
 // Call close will stop the Read method from working.
 //
 // Close can safely be called more than once.
+//
+// Close makes strfs.Content fit the io.Closer interface.
 func (receiver *Content) Close() error {
 	if nil == receiver {
 		return errNilReceiver

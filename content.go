@@ -100,10 +100,11 @@ func (receiver *Content) Closed() bool {
 
 	return receiver.closed
 }
-// Read makes strfs.Content fit the io.Reader interface.
-//
+
 // Read reads up to len(p) bytes into 'p'.
 // Read returns the number of bytes actually read, and any errors it encountered.
+//
+// Read makes strfs.Content fit the io.Reader interface.
 //
 // Example usage:
 //

@@ -70,7 +70,7 @@ func EmptyContent() Content {
 	return Content{}
 }
 
-// Call close will stop the Read method from working.
+// Close will stop the Read method from working.
 //
 // Close can safely be called more than once.
 //

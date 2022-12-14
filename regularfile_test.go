@@ -249,5 +249,17 @@ func TestRegularFile(t *testing.T) {
 				continue
 			}
 		}
+
+		{
+			var expected string = test.FileContent
+			var actual   string = fileinfo.Sys().(string)
+
+			if expected != actual {
+				t.Errorf("For test #%d, the actual value for sys was not what was expected.", testNumber)
+				t.Logf("EXPECTED SYS: %q", expected)
+				t.Logf("ACTUAL   SYS: %q", actual)
+				continue
+			}
+		}
 	}
 }

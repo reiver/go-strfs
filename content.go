@@ -80,7 +80,7 @@ func (receiver *Content) Close() error {
 		return errNilReceiver
 	}
 
-	if receiver.closed {
+	if receiver.Closed() {
 		return nil
 	}
 
@@ -91,6 +91,10 @@ func (receiver *Content) Close() error {
 // Closed returns whether a strfs.Content is closed or not.
 func (receiver *Content) Closed() bool {
 	if nil == receiver {
+		return true
+	}
+
+	if EmptyContent() == *receiver {
 		return true
 	}
 
@@ -135,7 +139,7 @@ func (receiver *Content) Read(p []byte) (int, error) {
 		return 0, errInternalError
 	}
 
-	if receiver.closed {
+	if receiver.Closed() {
 		return 0, nil
 	}
 

@@ -89,6 +89,10 @@ func (receiver *RegularFile) Stat() (fs.FileInfo, error) {
 		return nil, errNilReceiver
 	}
 
+	if EmptyContent() == receiver.FileContent {
+		return nil, errEmptyContent
+	}
+
 	const modeRegularFile = 0
 
 	return internalFileInfo{

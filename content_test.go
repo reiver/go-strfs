@@ -31,6 +31,18 @@ func TestContent(t *testing.T) {
 		{
 			Content: "once twice thrice fource",
 		},
+
+
+
+		{
+			Content: "۰	۱	۲	۳	۴	۵	۶	۷	۸	۹",
+		},
+
+
+
+		{
+			Content: "Hello world! 😈",
+		},
 	}
 
 	for testNumber, test := range tests {

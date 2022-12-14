@@ -134,13 +134,13 @@ func (receiver *Content) Read(p []byte) (int, error) {
 		return 0, errNilByteSlice
 	}
 
+	if receiver.Closed() {
+		return 0, errClosed
+	}
+
 	var reader io.Reader = receiver.reader
 	if nil == reader {
 		return 0, errInternalError
-	}
-
-	if receiver.Closed() {
-		return 0, nil
 	}
 
 	return receiver.reader.Read(p)

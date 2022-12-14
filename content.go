@@ -51,11 +51,11 @@ func CreateContent(s string) Content {
 	}
 }
 
-// NoContent is used to see if a given strfs.Content has no content.
+// EmptyContent is used to see if a given strfs.Content is empty.
 //
-// Note that having no content is NOT the same as containing the empty string!
+// Note that a strfs.Content being empty is NOT the same as containing the empty string!
 //
-// A strfs.Content contains no content when it hasn't been initialized.
+// A strfs.Content is empty when it hasn't been initialized.
 //
 // Example usage:
 //
@@ -63,10 +63,10 @@ func CreateContent(s string) Content {
 //	
 //	// ...
 //	
-//	if strfs.NoContent() == content {
+//	if strfs.EmptyContent() == content {
 //		//@TODO
 //	}
-func NoContent() Content {
+func EmptyContent() Content {
 	return Content{}
 }
 

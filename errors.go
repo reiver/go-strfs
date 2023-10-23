@@ -1,14 +1,14 @@
 package strfs
 
 import (
-	"github.com/reiver/go-fck"
+	"sourcecode.social/reiver/go-erorr"
 )
 
 const (
-	errClosed        = fck.Error("closed")
-	errEmptyContent  = fck.Error("empty content")
-	errInternalError = fck.Error("internal error")
-	errNilByteSlice  = fck.Error("nil byte slice")
-	errNilReader     = fck.Error("nil reader")
-	errNilReceiver   = fck.Error("nil receiver")
+	errClosed        = erorr.Error("closed")
+	errEmptyContent  = erorr.Error("empty content")
+	errInternalError = erorr.Error("internal error")
+	errNilByteSlice  = erorr.Error("nil byte slice")
+	errNilReader     = erorr.Error("nil reader")
+	errNilReceiver   = erorr.Error("nil receiver")
 )

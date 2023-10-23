@@ -14,7 +14,7 @@ import (
 //	var regularfile strfs.RegularFile = strfs.RegularFile{
 //		FileContent: content,
 //		FileName:    "helloworld.html",
-//		FileModTIme: time.Date(2022, 12, 12, 10, 30, 14, 2, time.UTC),
+//		FileModTime: time.Date(2022, 12, 12, 10, 30, 14, 2, time.UTC),
 //	}
 type RegularFile struct {
 	FileContent Content

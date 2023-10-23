@@ -18,7 +18,7 @@ import (
 //	var regularfile strfs.RegularFile = strfs.RegularFile{
 //		FileContent: content,
 //		FileName:    "notice.html",
-//		FileModTIme: time.Date(2022, 12, 12, 10, 30, 14, 2, time.UTC),
+//		FileModTime: time.Date(2022, 12, 12, 10, 30, 14, 2, time.UTC),
 //	}
 type Content struct{
 	value string
@@ -40,7 +40,7 @@ var _ io.ReadCloser = &Content{}
 //	var regularfile strfs.RegularFile = strfs.RegularFile{
 //		FileContent: content,
 //		FileName:    "message.md",
-//		FileModTIme: time.Now(),
+//		FileModTime: time.Now(),
 //	}
 func CreateContent(value string) Content {
 	var reader io.Reader = strings.NewReader(value)

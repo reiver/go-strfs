@@ -1,7 +1,7 @@
 package strfs_test
 
 import (
-	"github.com/reiver/go-strfs"
+	"sourcecode.social/reiver/go-strfs"
 
 	"io"
 

@@ -1,7 +1,7 @@
 package strfs
 
 import (
-	"sourcecode.social/reiver/go-erorr"
+	"github.com/reiver/go-erorr"
 )
 
 const (

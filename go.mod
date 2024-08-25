@@ -1,5 +1,5 @@
-module sourcecode.social/reiver/go-strfs
+module github.com/reiver/go-strfs
 
 go 1.18
 
-require sourcecode.social/reiver/go-erorr v0.0.0-20230922202459-231149d185a1 // indirect
+require github.com/reiver/go-erorr v0.0.0-20240801233437-8cbde6d1fa3f // indirect

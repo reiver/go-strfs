@@ -30,3 +30,21 @@ var regularfile strfs.RegularFile = strfs.RegularFile{
 var file fs.FS = &regularfile
 
 ```
+
+## Import
+
+To import package **strfs** use `import` code like the following:
+```
+import "codeberg.org/reiver/go-strfs"
+```
+
+## Installation
+
+To install package **strfs** do the following:
+```
+GOPROXY=direct go get codeberg.org/reiver/go-strfs
+```
+
+## Author
+
+Package **strfs** was written by [Charles Iliya Krempeaux](http://reiver.link)

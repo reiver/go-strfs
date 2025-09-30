@@ -34,14 +34,16 @@ var file fs.FS = &regularfile
 ## Import
 
 To import package **strfs** use `import` code like the following:
-```
+
+```golang
 import "codeberg.org/reiver/go-strfs"
 ```
 
 ## Installation
 
 To install package **strfs** do the following:
-```
+
+```bash
 GOPROXY=direct go get codeberg.org/reiver/go-strfs
 ```
 

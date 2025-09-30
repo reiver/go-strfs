@@ -1,4 +1,4 @@
-module github.com/reiver/go-strfs
+module codeberg.org/reiver/go-strfs
 
 go 1.18
 

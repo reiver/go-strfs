@@ -4,16 +4,16 @@ Package **strfs** provides a virtual file-system, whre a `fs.File` can be create
 
 ## Documention
 
-Online documentation, which includes examples, can be found at: http://godoc.org/github.com/reiver/go-strfs
+Online documentation, which includes examples, can be found at: http://godoc.org/codeberg.org/reiver/go-strfs
 
-[![GoDoc](https://godoc.org/github.com/reiver/go-strfs?status.svg)](https://godoc.org/github.com/reiver/go-strfs)
+[![GoDoc](https://godoc.org/codeberg.org/reiver/go-strfs?status.svg)](https://godoc.org/codeberg.org/reiver/go-strfs)
 
 ## Example fs.File
 
 Here is an example of turning a Go `string` into a `fs.File`:
 
 ```go
-import "github.com/reiver/go-strfs"
+import "codeberg.org/reiver/go-strfs"
 
 // ...
 

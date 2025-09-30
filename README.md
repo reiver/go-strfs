@@ -27,7 +27,7 @@ var regularfile strfs.RegularFile = strfs.RegularFile{
 	FileModTime: time.Date(2022, 12, 12, 10, 30, 14, 2, time.UTC),
 }
 
-var file fs.FS = &regularfile
+var file fs.File = &regularfile
 
 ```
 

@@ -22,9 +22,15 @@ type RegularFile struct {
 	FileModTime time.Time
 }
 
-// A trick to make sure strfs.RegularFile fits the fs.File interface.
-// This is a compile-time check.
-var _ fs.File = &RegularFile{}
+var (
+	// A trick to make sure strfs.RegularFile fits the fs.File interface.
+	// This is a compile-time check.
+	_ fs.File = &RegularFile{}
+
+	// A trick to make sure strfs.RegularFile fits the fs.DirEntry interface.
+	// This is a compile-time check.
+	_ fs.DirEntry = &RegularFile{}
+)
 
 // Close will stop the Read method from working.
 //
@@ -38,6 +44,32 @@ func (receiver *RegularFile) Close() error {
 	}
 
 	return receiver.FileContent.Close()
+}
+
+func (receiver *RegularFile) Info() (fs.FileInfo, error) {
+	if nil == receiver {
+		return nil, errNilReceiver
+	}
+
+	if EmptyContent() == receiver.FileContent {
+		return nil, errEmptyContent
+	}
+
+	return internalFileInfo{
+		sys:     receiver.FileContent.String(),
+		name:    receiver.Name(),
+		size:    receiver.FileContent.Size(),
+		mode:    receiver.Type(),
+		modtime: receiver.FileModTime,
+	}, nil
+}
+
+func (RegularFile) IsDir() bool {
+	return false
+}
+
+func (receiver RegularFile) Name() string {
+	return receiver.FileName
 }
 
 // Read reads up to len(p) bytes into 'p'.
@@ -85,21 +117,10 @@ func (receiver *RegularFile) Read(p []byte) (int, error) {
 //
 // Stat helps strfs.RegularFile fit the fs.File interface.
 func (receiver *RegularFile) Stat() (fs.FileInfo, error) {
-	if nil == receiver {
-		return nil, errNilReceiver
-	}
+	return receiver.Info()
+}
 
-	if EmptyContent() == receiver.FileContent {
-		return nil, errEmptyContent
-	}
-
+func (RegularFile) Type() fs.FileMode {
 	const modeRegularFile = 0
-
-	return internalFileInfo{
-		sys:     receiver.FileContent.String(),
-		name:    receiver.FileName,
-		size:    receiver.FileContent.Size(),
-		mode:    modeRegularFile,
-		modtime: receiver.FileModTime,
-	}, nil
+	return modeRegularFile
 }

@@ -82,11 +82,19 @@ func (receiver *RegularFile) Info() (fs.FileInfo, error) {
 	}, nil
 }
 
-func (receiver RegularFile) IsDir() bool {
+func (receiver *RegularFile) IsDir() bool {
+	if nil == receiver {
+		return false
+	}
+
 	return receiver.FileContent.IsDir()
 }
 
-func (receiver RegularFile) Name() string {
+func (receiver *RegularFile) Name() string {
+	if nil == receiver {
+		return ""
+	}
+
 	return receiver.FileName
 }
 

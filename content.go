@@ -103,7 +103,7 @@ func (receiver *Content) Closed() bool {
 	return receiver.closed
 }
 
-func (Content) IsDir() bool {
+func (*Content) IsDir() bool {
 	return false
 }
 

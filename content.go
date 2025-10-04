@@ -149,7 +149,7 @@ func (receiver *Content) Read(p []byte) (int, error) {
 	return receiver.reader.Read(p)
 }
 
-// Size returns the of the strnig given to it as the number of bytes.
+// Size returns the of the string given to it as the number of bytes.
 func (receiver *Content) Size() int64 {
 	if nil == receiver {
 		return 0

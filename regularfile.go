@@ -1,11 +1,12 @@
 package strfs
 
 import (
+	"io"
 	"io/fs"
 	"time"
 )
 
-// RegularFile lets you turn a string into a fs.File.
+// RegularFile lets you turn a string into a [fs.File] that also implements [io.Seeker].
 //
 // Example usage:
 //
@@ -16,11 +17,15 @@ import (
 //		FileName:    "helloworld.html",
 //		FileModTime: time.Date(2022, 12, 12, 10, 30, 14, 2, time.UTC),
 //	}
+//
 type RegularFile struct {
 	FileContent Content
 	FileName string
 	FileModTime time.Time
 }
+
+var _ fs.File = &RegularFile{}
+var _ io.ReadSeekCloser = &RegularFile{}
 
 var (
 	// A trick to make sure strfs.RegularFile fits the fs.File interface.
@@ -111,6 +116,15 @@ func (receiver *RegularFile) Read(p []byte) (int, error) {
 	}
 
 	return receiver.FileContent.Read(p)
+}
+
+func (receiver *RegularFile) Seek(offset int64, whence int) (int64, error) {
+	if nil == receiver {
+		var nada int64
+		return nada, errNilReceiver
+	}
+
+	return receiver.FileContent.Seek(offset, whence)
 }
 
 // Stat returns a fs.FileInfo for a *strfs.RegularFile.

@@ -9,6 +9,6 @@ const (
 	errEmptyContent  = erorr.Error("empty content")
 	errInternalError = erorr.Error("internal error")
 	errNilByteSlice  = erorr.Error("nil byte slice")
-	errNilReader     = erorr.Error("nil reader")
+	errNilReadSeeker = erorr.Error("nil read-seeker")
 	errNilReceiver   = erorr.Error("nil receiver")
 )

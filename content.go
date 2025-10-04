@@ -22,14 +22,14 @@ import (
 //	}
 type Content struct{
 	value string
-	reader io.Reader
+	reader io.ReadSeeker
 	size int64
 	closed bool
 }
 
 // A trick to make sure strfs.Content fits the io.ReadCloser interface.
 // This is a compile-time check.
-var _ io.ReadCloser = &Content{}
+var _ io.ReadSeekCloser = &Content{}
 
 // CreateContent returns a strfs.Content whose content is the string given to it.
 //
@@ -43,7 +43,7 @@ var _ io.ReadCloser = &Content{}
 //		FileModTime: time.Now(),
 //	}
 func CreateContent(value string) Content {
-	var reader io.Reader = strings.NewReader(value)
+	var reader io.ReadSeeker = strings.NewReader(value)
 	var size int64 = int64(len(value))
 
 	return Content{
@@ -147,6 +147,19 @@ func (receiver *Content) Read(p []byte) (int, error) {
 	}
 
 	return receiver.reader.Read(p)
+}
+
+func (receiver *Content) Seek(offset int64, whence int) (int64, error) {
+	if nil == receiver {
+		var nada int64
+		return nada, errNilReceiver
+	}
+	if nil == receiver.reader {
+		var nada int64
+		return nada, errNilReadSeeker
+	}
+
+	return receiver.Seek(offset, whence)
 }
 
 // Size returns the of the string given to it as the number of bytes.

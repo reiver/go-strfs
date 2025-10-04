@@ -147,6 +147,17 @@ func (receiver *RegularFile) Stat() (fs.FileInfo, error) {
 	return receiver.Info()
 }
 
+// String returns the value of the string that strfs.RegularFile is wrapping.
+//
+// String makes *strfs.RegularFile fit the fmt.Stringer interface.
+func (receiver *RegularFile) String() string {
+	if nil == receiver {
+		return ""
+	}
+
+	return receiver.FileContent.String()
+}
+
 func (RegularFile) Type() fs.FileMode {
 	const modeRegularFile = 0
 	return modeRegularFile

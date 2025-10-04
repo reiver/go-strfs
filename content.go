@@ -103,6 +103,10 @@ func (receiver *Content) Closed() bool {
 	return receiver.closed
 }
 
+func (Content) IsDir() bool {
+	return false
+}
+
 // Read reads up to len(p) bytes into 'p'.
 // Read returns the number of bytes actually read, and any errors it encountered.
 //

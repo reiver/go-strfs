@@ -51,6 +51,19 @@ func (receiver *RegularFile) Close() error {
 	return receiver.FileContent.Close()
 }
 
+// Closed returns whether a strfs.RegularFile is closed or not.
+func (receiver *RegularFile) Closed() bool {
+	if nil == receiver {
+		return true
+	}
+
+	if EmptyContent() == receiver.FileContent {
+		return true
+	}
+
+        return receiver.FileContent.Closed()
+}
+
 func (receiver *RegularFile) Info() (fs.FileInfo, error) {
 	if nil == receiver {
 		return nil, errNilReceiver
